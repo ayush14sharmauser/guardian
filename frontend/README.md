@@ -1,173 +1,132 @@
-# 🛡️ Guardian – Autonomous AI Security Engineer
+🛡️ Guardian – Autonomous AI Security Engineer
 
-Guardian is an AI-powered security engineering platform that analyzes GitHub repositories, identifies security vulnerabilities, explains their impact, generates remediation guidance, verifies fixes, and produces executive-ready security reports.
+Guardian is an AI-powered security engineering platform built to analyze GitHub repositories. It spots security vulnerabilities, explains what they mean, offers step-by-step fixes, double-checks your changes, and packages all this into polished, executive-level reports.
 
-Unlike traditional static scanners, Guardian combines automated repository analysis with AI-assisted investigation to help developers understand **why** a vulnerability exists, **how** to fix it, and **how severe the risk is**.
+While most static analyzers just spit out endless lists, Guardian actually digs into your code, shows you why a vulnerability matters, outlines how to fix it, and gives you a real sense of the risk involved.
 
----
+🌐 Live Demo
 
-## 🌐 Live Demo
+https://guardian-gamma-vert.vercel.app
 
-**https://guardian-gamma-vert.vercel.app**
+💻 GitHub Repository
 
-## 💻 GitHub Repository
+https://github.com/ayush14sharmauser/guardian
 
-**https://github.com/ayush14sharmauser/guardian**
+🎯 The Problem
 
----
+Modern GitHub repos are huge—sometimes with thousands of files. Reviewing everything by hand is slow and painful, and most security tools just drown developers in findings with zero context or advice.
 
-# 🎯 Problem Statement
+Guardian tackles this by combining automated scanning with AI-powered investigation. It doesn’t just find problems. It explains their impact, links them to frameworks like OWASP Top 10 and MITRE ATT&CK, and shows you exactly what to do about them. Plus, you get slick, executive-ready reports in one click.
 
-Modern GitHub repositories often contain thousands of files, making manual security reviews slow, inconsistent, and error-prone. Existing security tools frequently overwhelm developers with raw findings but provide little context or remediation guidance.
+✨ Features
 
-Guardian solves this problem by combining automated repository analysis with AI-powered investigation to detect security issues, explain their impact, map findings to industry-standard frameworks such as **OWASP Top 10** and **MITRE ATT&CK**, and generate actionable remediation guidance along with executive-ready reports.
+- Smart, AI-based analysis for any GitHub repo
+- Detects secrets and credentials hiding in code
+- AI-driven investigation of every security issue
+- Grades risks and helps prioritize
+- Generates clear, actionable fix instructions
+- Built-in verification
+- Maps findings to MITRE ATT&CK and OWASP Top 10
+- Executive-level reporting
+- Export options: PDF, Markdown, and JSON
+- Interactive security dashboards
+- Fast, modern UI with smooth animations and real-time updates
 
----
+📸 Project Preview
 
-# ✨ Features
+Landing Page
+![Landing Page](./public/screenshots/landing.png)
 
-- 🔍 AI-powered GitHub repository analysis
-- 🔐 Secret & credential detection
-- 🧠 AI-assisted security investigation
-- ⚠️ Risk assessment & security grading
-- 🛠️ AI-generated remediation guidance
-- ✅ Verification engine
-- 🗺️ MITRE ATT&CK mapping
-- 🛡️ OWASP Top 10 mapping
-- 📄 Executive security reports
-- 📤 Export reports (PDF, Markdown & JSON)
-- 📊 Interactive security dashboard
-- ⚡ Responsive modern UI
-- 🎨 Smooth animations and real-time feedback
+Repository Analysis
+![Analysis](./public/screenshots/analysis.png)
 
----
+Security Dashboard
+![Dashboard](./public/screenshots/dashboard.png)
 
-# 📸 Project Preview
+AI Findings
+![Findings](./public/screenshots/findings.png)
 
-> Replace these placeholders with screenshots from your deployed application.
+Executive Report
+![Report](./public/screenshots/report.png)
 
-| Landing Page |
-|---------------|
-| ![Landing Page](./public/screenshots/landing.png) |
+Mobile View
+![Mobile](./public/screenshots/mobile.png)
 
-| Repository Analysis |
-|---------------------|
-| ![Analysis](./public/screenshots/analysis.png) |
+🏗️ Architecture
 
-| Security Dashboard |
-|--------------------|
-| ![Dashboard](./public/screenshots/dashboard.png) |
+GitHub Repository
+     │
+     ▼
+Repository Scanner
+     │
+     ▼
+Security Analysis Engine
+   ┌──────┬───────────┬────────────┐
+   ▼      ▼           ▼
+Secret Detection  Risk Analysis  AI Investigation
+   │      │           │
+   └──────┼───────────┘
+     ▼
+OWASP & MITRE Mapping
+     │
+     ▼
+Executive Report Generator
+     │
+     ▼
+Interactive Security Dashboard
 
-| AI Findings |
-|-------------|
-| ![Findings](./public/screenshots/findings.png) |
+🛠️ Tech Stack
 
-| Executive Report |
-|------------------|
-| ![Report](./public/screenshots/report.png) |
+Category        Technologies
+Frontend        Next.js 16, React 19, TypeScript
+Styling         Tailwind CSS v4, Framer Motion
+Backend         Next.js API Routes
+AI              GPT-powered Security Analysis
+Security        OWASP Top 10, MITRE ATT&CK
+Reports         PDF, Markdown, JSON
+Deployment      Vercel
+Version Control Git & GitHub
 
-| Mobile View |
-|-------------|
-| ![Mobile](./public/screenshots/mobile.png) |
+🚀 Getting Started
 
----
-
-# 🏗️ Architecture
-
-```text
-                 GitHub Repository
-                        │
-                        ▼
-              Repository Scanner
-                        │
-                        ▼
-             Security Analysis Engine
-                        │
-       ┌────────────────┼────────────────┐
-       ▼                ▼                ▼
- Secret Detection   Risk Analysis   AI Investigation
-       │                │                │
-       └────────────────┼────────────────┘
-                        ▼
-          OWASP & MITRE Mapping Engine
-                        │
-                        ▼
-             Executive Report Generator
-                        │
-                        ▼
-              Interactive Security Dashboard
-```
-
----
-
-# 🛠️ Tech Stack
-
-| Category | Technologies |
-|----------|--------------|
-| Frontend | Next.js 16, React 19, TypeScript |
-| Styling | Tailwind CSS v4, Framer Motion |
-| Backend | Next.js API Routes |
-| AI | GPT-powered Security Analysis |
-| Security | OWASP Top 10, MITRE ATT&CK |
-| Reports | PDF, Markdown, JSON |
-| Deployment | Vercel |
-| Version Control | Git & GitHub |
-
----
-
-# 🚀 Installation
-
-## Prerequisites
+Prerequisites
 
 - Node.js 18+
 - npm
 - Git
 
-## Clone Repository
+Clone the repository
 
-```bash
 git clone https://github.com/ayush14sharmauser/guardian.git
 cd guardian/frontend
-```
 
-## Install Dependencies
+Install dependencies
 
-```bash
 npm install
-```
 
-## Start Development Server
+Start the development server
 
-```bash
 npm run dev
-```
 
-Open:
+Then head to:
 
-```
 http://localhost:3000
-```
 
----
+🔄 How Guardian Works
 
-# 🔄 How Guardian Works
+1. You enter a GitHub repository URL.
+2. Guardian pulls in the repository’s details.
+3. The security engine analyzes the codebase.
+4. AI digs into anything fishy it finds.
+5. Each finding gets a risk level.
+6. Issues are mapped to OWASP Top 10.
+7. They're also mapped to MITRE ATT&CK.
+8. AI creates step-by-step remediation advice.
+9. Guardian verifies if fixes are legit.
+10. You get interactive dashboards and downloadable reports.
 
-1. User enters a GitHub repository URL.
-2. Guardian retrieves repository metadata.
-3. The security engine analyzes the repository.
-4. AI investigates detected findings.
-5. Risk severity is calculated.
-6. Findings are mapped to OWASP Top 10.
-7. Findings are mapped to MITRE ATT&CK.
-8. AI generates remediation guidance.
-9. Guardian verifies recommendations.
-10. Interactive dashboards and downloadable reports are generated.
+📂 Project Structure
 
----
-
-# 📂 Project Structure
-
-```
 guardian/
 │
 ├── frontend/
@@ -180,77 +139,78 @@ guardian/
 │
 ├── README.md
 └── LICENSE
-```
 
----
+📈 Roadmap
 
-# 📈 Future Roadmap
+- AI-powered repo analysis
+- Secret detection
+- Risk assessment
+- AI investigation
+- Patch recommendations
+- Verification engine
+- OWASP Top 10 mapping
+- MITRE ATT&CK mapping
+- Executive reports
+- Authentication (coming soon)
+- Scan history (coming soon)
+- Team collaboration (coming soon)
+- GitHub App integration (coming soon)
+- CI/CD integration (coming soon)
+- Multi-repository scanning (coming soon)
+- Historical vulnerability tracking (coming soon)
 
-- [x] AI-powered repository analysis
-- [x] Secret detection
-- [x] Risk assessment
-- [x] AI investigation
-- [x] Patch recommendations
-- [x] Verification engine
-- [x] OWASP Top 10 mapping
-- [x] MITRE ATT&CK mapping
-- [x] Executive reports
-- [ ] Authentication
-- [ ] Scan history
-- [ ] Team collaboration
-- [ ] GitHub App integration
-- [ ] CI/CD integration
-- [ ] Multi-repository scanning
-- [ ] Historical vulnerability tracking
+🤝 Contributing
 
----
+Want to help out? Great!
 
-# 🤝 Contributing
+1. Fork the repo
+2. Create a feature branch
+3. Commit your changes
+4. Push your branch
+5. Open a pull request
 
-Contributions are welcome!
+Just make sure you add documentation and tests for new features.
 
-1. Fork the repository.
-2. Create a feature branch.
-3. Commit meaningful changes.
-4. Push your branch.
-5. Open a Pull Request.
+📄 License
 
-Please ensure new features include documentation and appropriate testing.
+This project uses the MIT License. Check the LICENSE file for full details.
 
----
+🙏 Acknowledgements
 
-# 📄 License
-
-This project is licensed under the **MIT License**.
-
-See the **LICENSE** file for details.
-
----
-
-# 🙏 Acknowledgements
-
-Guardian is inspired by modern application security practices and industry standards, including:
+Big thanks to the industry standards and practices that helped shape Guardian, including:
 
 - OWASP Top 10
 - MITRE ATT&CK Framework
 - Secure Software Development Lifecycle (SSDLC)
-- AI-assisted vulnerability analysis
-- Modern DevSecOps practices
+- AI-fueled vulnerability analysis
+- Modern DevSecOps ideas
 
----
+🌟 Why Guardian?
 
-# 🌟 Why Guardian?
+Guardian does more than scan your repositories. It acts like a true AI Security Engineer—finding real issues, explaining why they matter, giving you smart, actionable advice, double-checking your fixes, and making fancy reports for management. Secure development finally feels approachable.
 
-Guardian isn't just another repository scanner—it acts as an **AI Security Engineer** that helps developers:
+Built with ❤️ on Next.js, React, TypeScript, Tailwind CSS, Framer Motion, and a powerful AI security engine.
 
-- Detect vulnerabilities
-- Understand why they matter
-- Receive AI-generated remediation guidance
-- Verify fixes
-- Produce executive-ready security reports
+🤖 AI Development Workflow (GPT-5.6 & Codex)
 
-making secure software development faster, easier, and more accessible.
+Guardian was designed and built with a little help from OpenAI’s GPT-5.6 and Codex throughout development.
 
----
+GPT-5.6 helped:
 
-Built with ❤️ using **Next.js**, **React**, **TypeScript**, **Tailwind CSS**, **Framer Motion**, and **AI-powered security analysis**.
+- Plan the app architecture
+- Refine the security analysis workflow
+- Improve UI copy and user experience
+- Review docs and README content
+- Double-check production readiness
+
+Codex stepped in to:
+
+- Speed up React and Next.js component development
+- Assist with TypeScript and debugging
+- Optimize UI layouts, animations, and responsiveness
+- Troubleshoot build and deployment hiccups
+- Sharpen code through iteration
+
+Developer Contribution
+
+All features, design, architecture, integration, testing, deployment, and final checks were driven by the project author. AI made for a great coding partner, speeding up implementation and raising code quality, but every key product decision stayed human.
