@@ -21,7 +21,8 @@ const mono = JetBrains_Mono({
 });
 
 const siteUrl =
-  process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
+  process.env.NEXT_PUBLIC_SITE_URL ??
+  "https://guardian-gamma-vert.vercel.app";
 
 const project = {
   name: "Guardian",
@@ -34,9 +35,9 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
 
   title: {
-    default: project.name,
-    template: `%s | ${project.name}`,
-  },
+  default: project.fullName,
+  template: `%s | Guardian`,
+},
 
   description: project.description,
 
@@ -57,28 +58,32 @@ export const metadata: Metadata = {
       url: "https://github.com/ayush14sharmauser",
     },
   ],
-
+robots: {
+  index: true,
+  follow: true,
+},
+category: "Technology",
   openGraph: {
     title: project.fullName,
     description: project.description,
     url: siteUrl,
     siteName: project.name,
     type: "website",
-    // images: [
-    //   {
-    //     url: "/og-image.png",
-    //     width: 1200,
-    //     height: 630,
-    //     alt: "Guardian",
-    //   },
-    // ],
+     images: [
+       {
+         url: "/og-image.png",
+         width: 1200,
+         height: 630,
+         alt: "Guardian",
+       },
+     ],
   },
 
   twitter: {
     card: "summary_large_image",
     title: project.fullName,
     description: project.description,
-    // images: ["/og-image.png"],
+     images: ["/og-image.png"],
   },
 };
 
