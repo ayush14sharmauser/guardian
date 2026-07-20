@@ -208,8 +208,8 @@ export default function Hero() {
         <div className="absolute inset-0 opacity-60" style={gridStyle} />
       </div>
 
-      <div className="mx-auto flex w-full max-w-7xl flex-col px-4 pb-20 pt-28 sm:px-6 lg:px-8 lg:pt-32">
-        <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
+      <div className="mx-auto flex w-full max-w-[1440px] flex-col px-6 pb-40 pt-44 sm:px-8 lg:px-12 lg:pb-44 lg:pt-52">
+        <div className="grid gap-24 lg:grid-cols-2 lg:gap-36">
           <div className="flex flex-col items-start">
             <motion.div
               initial={fadeInitial}
@@ -230,7 +230,7 @@ export default function Hero() {
               initial={fadeInitial}
               animate={fadeAnimate}
               transition={{ duration: 0.55, delay: 0.08, ease: "easeOut" }}
-              className="mt-6 max-w-xl text-4xl font-semibold tracking-tight text-white sm:text-5xl lg:text-[3.25rem] lg:leading-[1.1]"
+              className="mt-12 max-w-2xl text-5xl font-semibold tracking-tight text-white sm:text-6xl lg:text-[4.1rem] lg:leading-[1.05]"
             >
               AI Security Engineer for{" "}
               <span className="bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent">
@@ -242,7 +242,7 @@ export default function Hero() {
               initial={fadeInitial}
               animate={fadeAnimate}
               transition={{ duration: 0.55, delay: 0.16, ease: "easeOut" }}
-              className="mt-5 max-w-lg text-base leading-relaxed text-zinc-400 sm:text-lg"
+              className="mt-10 max-w-xl text-lg leading-8 text-zinc-400"
             >
               Guardian scans public repositories, detects secrets, analyzes
               vulnerabilities, and generates AI-powered security reports — so
@@ -253,13 +253,13 @@ export default function Hero() {
               initial={fadeInitial}
               animate={fadeAnimate}
               transition={{ duration: 0.55, delay: 0.24, ease: "easeOut" }}
-              className="mt-8 flex flex-wrap items-center gap-3"
+              className="mt-14 flex flex-wrap items-center gap-5"
             >
               <button
                 type="button"
                 onClick={handlePrimary}
                 onKeyDown={onKeyActivate(handlePrimary)}
-                className="group inline-flex items-center justify-center gap-2 rounded-lg bg-emerald-500 px-5 py-2.5 text-sm font-semibold text-zinc-950 shadow-[0_0_0_1px_rgba(16,185,129,0.4),0_8px_24px_-6px_rgba(16,185,129,0.55)] transition-all duration-200 hover:bg-emerald-400 hover:shadow-[0_0_0_1px_rgba(52,211,153,0.5),0_12px_28px_-6px_rgba(16,185,129,0.65)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-950 active:scale-[0.98]"
+                className="group inline-flex items-center justify-center gap-2 rounded-lg bg-emerald-500 px-7 py-3.5 text-sm font-semibold text-zinc-950 shadow-[0_0_0_1px_rgba(16,185,129,0.4),0_8px_24px_-6px_rgba(16,185,129,0.55)] transition-all duration-200 hover:bg-emerald-400 hover:shadow-[0_0_0_1px_rgba(52,211,153,0.5),0_12px_28px_-6px_rgba(16,185,129,0.65)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-950 active:scale-[0.98]"
               >
                 Start Analysis
                 <ArrowRight
@@ -272,7 +272,7 @@ export default function Hero() {
                 type="button"
                 onClick={handleSecondary}
                 onKeyDown={onKeyActivate(handleSecondary)}
-                className="inline-flex items-center justify-center rounded-lg border border-white/10 bg-white/5 px-5 py-2.5 text-sm font-semibold text-zinc-100 backdrop-blur-md transition-all duration-200 hover:border-white/20 hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400/60 focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-950 active:scale-[0.98]"
+                className="inline-flex items-center justify-center rounded-lg border border-white/10 bg-white/5 px-7 py-3.5 text-sm font-semibold text-zinc-100 backdrop-blur-md transition-all duration-200 hover:border-white/20 hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400/60 focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-950 active:scale-[0.98]"
               >
                 View Features
               </button>
@@ -286,7 +286,7 @@ export default function Hero() {
             className="relative w-full"
           >
             <div
-              className="absolute -inset-px rounded-2xl bg-gradient-to-b from-emerald-500/30 via-white/10 to-transparent opacity-80"
+              className="absolute -inset-2 rounded-[28px] bg-gradient-to-b from-emerald-500/40 via-white/10 to-transparent opacity-90 blur-sm"
               aria-hidden="true"
             />
             <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-zinc-950/80 shadow-2xl shadow-emerald-950/40 backdrop-blur-xl">
@@ -305,7 +305,7 @@ export default function Hero() {
               </div>
 
               <div
-                className="min-h-[280px] p-5 font-mono text-sm leading-7 sm:min-h-[300px] sm:p-6"
+                className="min-h-[460px] p-8 font-mono text-[15px] leading-9 sm:min-h-[500px] sm:p-10"
                 role="log"
                 aria-live="polite"
                 aria-relevant="additions"
@@ -363,49 +363,7 @@ export default function Hero() {
           </motion.div>
         </div>
 
-        <motion.div
-          id="features"
-          initial={fadeInitial}
-          animate={fadeAnimate}
-          transition={{ duration: 0.55, delay: 0.35, ease: "easeOut" }}
-          className="mt-20 scroll-mt-24 sm:mt-24"
-        >
-          <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {FEATURES.map((feature, i) => {
-              const Icon = feature.icon;
-              return (
-                <motion.li
-                  key={feature.title}
-                  initial={fadeInitial}
-                  animate={fadeAnimate}
-                  transition={{
-                    duration: 0.5,
-                    delay: reduceMotion ? 0 : 0.4 + i * 0.06,
-                    ease: "easeOut",
-                  }}
-                  whileHover={
-                    reduceMotion
-                      ? undefined
-                      : { y: -4, transition: { duration: 0.2 } }
-                  }
-                  className="group relative list-none"
-                >
-                  <div className="h-full rounded-xl border border-white/10 bg-white/[0.03] p-5 backdrop-blur-md transition-colors duration-200 hover:border-emerald-500/30 hover:bg-emerald-500/[0.06]">
-                    <div className="mb-3 inline-flex h-9 w-9 items-center justify-center rounded-lg border border-emerald-500/20 bg-emerald-500/10 text-emerald-400 transition-colors duration-200 group-hover:border-emerald-500/40 group-hover:bg-emerald-500/15">
-                      <Icon className="h-5 w-5" aria-hidden="true" />
-                    </div>
-                    <h3 className="text-sm font-semibold tracking-tight text-white">
-                      {feature.title}
-                    </h3>
-                    <p className="mt-1.5 text-sm leading-relaxed text-zinc-400">
-                      {feature.description}
-                    </p>
-                  </div>
-                </motion.li>
-              );
-            })}
-          </ul>
-        </motion.div>
+       
 
         <div id="analysis" className="sr-only" aria-hidden="true" />
       </div>

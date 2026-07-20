@@ -3,9 +3,9 @@
 import { motion, useReducedMotion } from "framer-motion";
 import type { ReactNode } from "react";
 
-const VIEWPORT_MARGIN = "-80px";
-const DEFAULT_DURATION = 0.6;
-const DEFAULT_DISTANCE = 22;
+const VIEWPORT_MARGIN = "-120px";
+const DEFAULT_DURATION = 0.7;
+const DEFAULT_DISTANCE = 28;
 
 interface ScrollRevealProps {
   children: ReactNode;
@@ -40,7 +40,7 @@ export default function ScrollReveal({
   if (prefersReducedMotion) {
     return (
       <motion.div
-        className={className}
+  className={`${className} will-change-transform`}
         initial={false}
         animate={{ opacity: 1 }}
       >
@@ -55,11 +55,11 @@ export default function ScrollReveal({
       initial={{ opacity: 0, ...directionMap[direction] }}
       whileInView={{ opacity: 1, x: 0, y: 0 }}
       viewport={{ once: true, margin: VIEWPORT_MARGIN }}
-      transition={{ 
-        duration, 
-        delay: delay / 1000, 
-        ease: [0.16, 1, 0.3, 1] 
-      }}
+      transition={{
+  duration,
+  delay: delay / 1000,
+  ease: [0.22, 1, 0.36, 1],
+}}
     >
       {children}
     </motion.div>

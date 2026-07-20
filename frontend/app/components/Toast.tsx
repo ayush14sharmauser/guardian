@@ -3,7 +3,12 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import type { ReactNode } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
-import { CheckCircle2, XCircle, AlertTriangle, Info } from "lucide-react";
+import {
+  CheckCircle2,
+  XCircle,
+  AlertTriangle,
+  Info,
+} from "lucide-react";
 
 // ---------------------------------------------------------------------------
 // Types & Interfaces
@@ -26,27 +31,47 @@ interface ToastContainerProps {
 // ---------------------------------------------------------------------------
 
 const DEFAULT_TOAST_DURATION = 3200;
-const TOAST_ANIMATION_DURATION = 0.3;
-const TOAST_EASE = [0.16, 1, 0.3, 1] as const;
+const TOAST_ANIMATION_DURATION = 0.32;
+const TOAST_EASE = [0.22, 1, 0.36, 1] as const;
 
 const TOAST_BASE_CLASS =
-  "flex items-center gap-2.5 rounded-xl border border-white/10 bg-[#0e151c]/95 px-4 py-3 text-sm text-white/85 shadow-[0_18px_40px_rgba(0,0,0,0.4)] backdrop-blur-xl";
+  "flex min-w-[320px] max-w-[420px] items-center gap-3 rounded-2xl border border-white/10 bg-[#0d141b]/95 px-5 py-4 text-sm font-medium text-white/90 shadow-[0_24px_60px_rgba(0,0,0,0.45)] backdrop-blur-2xl";
 
 const TOAST_VARIANTS = {
   success: {
-    icon: <CheckCircle2 aria-hidden="true" className="h-4 w-4 shrink-0 text-emerald-300" />,
-    borderColor: "",
+    icon: (
+      <CheckCircle2
+        aria-hidden="true"
+        className="h-5 w-5 shrink-0 text-emerald-300"
+      />
+    ),
+    borderColor: "border-emerald-400/20",
   },
   error: {
-    icon: <XCircle aria-hidden="true" className="h-4 w-4 shrink-0 text-rose-300" />,
+    icon: (
+      <XCircle
+        aria-hidden="true"
+        className="h-5 w-5 shrink-0 text-rose-300"
+      />
+    ),
     borderColor: "border-rose-400/20",
   },
   warning: {
-    icon: <AlertTriangle aria-hidden="true" className="h-4 w-4 shrink-0 text-amber-300" />,
+    icon: (
+      <AlertTriangle
+        aria-hidden="true"
+        className="h-5 w-5 shrink-0 text-amber-300"
+      />
+    ),
     borderColor: "border-amber-400/20",
   },
   info: {
-    icon: <Info aria-hidden="true" className="h-4 w-4 shrink-0 text-sky-300" />,
+    icon: (
+      <Info
+        aria-hidden="true"
+        className="h-5 w-5 shrink-0 text-sky-300"
+      />
+    ),
     borderColor: "border-sky-400/20",
   },
 } as const;
@@ -61,9 +86,9 @@ export function useToast() {
     new Map(),
   );
 
-  // Clear all pending timers on unmount to prevent state updates on dead components
   useEffect(() => {
     const timers = timersRef.current;
+
     return () => {
       timers.forEach(clearTimeout);
       timers.clear();
@@ -77,10 +102,14 @@ export function useToast() {
       duration: number = DEFAULT_TOAST_DURATION,
     ) => {
       const id = crypto.randomUUID();
+
       setToasts((current) => [...current, { id, message, type }]);
 
       const timer = setTimeout(() => {
-        setToasts((current) => current.filter((toast) => toast.id !== id));
+        setToasts((current) =>
+          current.filter((toast) => toast.id !== id),
+        );
+
         timersRef.current.delete(id);
       }, duration);
 
@@ -100,21 +129,35 @@ export function ToastContainer({ toasts }: ToastContainerProps) {
   const prefersReducedMotion = useReducedMotion();
 
   const animationProps = useMemo(() => {
-    return prefersReducedMotion
-      ? {
-          initial: { opacity: 1 },
-          animate: { opacity: 1 },
-          exit: { opacity: 0 },
-        }
-      : {
-          initial: { opacity: 0, y: 12, scale: 0.96 },
-          animate: { opacity: 1, y: 0, scale: 1 },
-          exit: { opacity: 0, y: 8, scale: 0.96 },
-          transition: {
-            duration: TOAST_ANIMATION_DURATION,
-            ease: TOAST_EASE,
-          },
-        };
+    if (prefersReducedMotion) {
+      return {
+        initial: { opacity: 1 },
+        animate: { opacity: 1 },
+        exit: { opacity: 0 },
+      };
+    }
+
+    return {
+      initial: {
+        opacity: 0,
+        x: 24,
+        scale: 0.96,
+      },
+      animate: {
+        opacity: 1,
+        x: 0,
+        scale: 1,
+      },
+      exit: {
+        opacity: 0,
+        x: 24,
+        scale: 0.96,
+      },
+      transition: {
+        duration: TOAST_ANIMATION_DURATION,
+        ease: TOAST_EASE,
+      },
+    };
   }, [prefersReducedMotion]);
 
   return (
@@ -122,7 +165,7 @@ export function ToastContainer({ toasts }: ToastContainerProps) {
       role="status"
       aria-live="polite"
       aria-atomic="true"
-      className="pointer-events-none fixed bottom-6 right-6 z-[100] flex flex-col gap-2"
+      className="pointer-events-none fixed bottom-8 right-8 z-[100] flex flex-col gap-3"
     >
       <AnimatePresence>
         {toasts.map((toast) => {
@@ -131,11 +174,15 @@ export function ToastContainer({ toasts }: ToastContainerProps) {
           return (
             <motion.div
               key={toast.id}
+              layout
               {...animationProps}
               className={`${TOAST_BASE_CLASS} ${variant.borderColor}`}
             >
               {variant.icon}
-              {toast.message}
+
+              <span className="flex-1 leading-6">
+                {toast.message}
+              </span>
             </motion.div>
           );
         })}

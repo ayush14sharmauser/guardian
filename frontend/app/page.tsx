@@ -1203,10 +1203,10 @@ export default function Home() {
       <div aria-hidden="true" className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(4,11,8,0.15)_0%,#060a08_83%)]" />
 
       <header className="sticky top-0 z-50 px-4 pt-4 sm:px-6 lg:px-8">
-        <div className="relative mx-auto flex h-[68px] max-w-[1240px] items-center justify-between rounded-2xl border border-white/[0.12] bg-[#0b110e]/70 px-4 shadow-[0_14px_45px_rgba(0,0,0,0.28)] backdrop-blur-2xl sm:px-5">
+        <div className="relative mx-auto flex h-[68px] max-w-[1440px] items-center justify-between rounded-2xl border border-white/[0.12] bg-[#0b110e]/70 px-4 shadow-[0_14px_45px_rgba(0,0,0,0.28)] backdrop-blur-2xl sm:px-5">
           <a aria-label="Guardian home" href="#home"><GuardianLogo /></a>
 
-          <nav aria-label="Main navigation" className="hidden items-center gap-0.5 lg:flex">
+          <nav aria-label="Main navigation" className="hidden items-center gap-6 lg:flex">
             {navLinks.map((item) => {
               const isActive = item.href === `#${activeSection}`;
               return (
@@ -1226,7 +1226,7 @@ export default function Home() {
 
           <div className="hidden items-center gap-3 lg:flex">
             <a
-              className="group flex items-center gap-2 rounded-xl bg-emerald-300 px-4 py-2.5 text-sm font-semibold text-[#062613] shadow-[0_0_28px_rgba(52,216,166,0.22)] transition hover:-translate-y-0.5 hover:bg-emerald-200"
+              className="group flex items-center gap-2 rounded-xl bg-emerald-300 px-5 py-2.5 text-sm font-semibold text-[#062613] shadow-[0_0_28px_rgba(52,216,166,0.22)] transition hover:-translate-y-0.5 hover:bg-emerald-200"
               href="#repository-analyzer"
             >
               Analyze Repository <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
@@ -1278,7 +1278,7 @@ export default function Home() {
       
 
       <ScrollReveal>
-        <section id="features" className="relative z-10 mx-auto max-w-[1240px] px-6 pb-24 pt-20 sm:px-10 lg:px-8">
+        <section id="features" className="relative z-10 mx-auto max-w-[1440px] px-6 pb-32 pt-32 sm:px-8 lg:px-12">
           <div className="mx-auto max-w-2xl text-center">
             <p className="text-xs font-semibold uppercase tracking-[0.16em] text-emerald-300/80">Capabilities</p>
             <h2 className="mt-3 font-display text-3xl font-semibold tracking-[-0.035em] text-white sm:text-4xl">Everything you need to secure your code</h2>
@@ -1307,7 +1307,7 @@ export default function Home() {
       </ScrollReveal>
 
       <ScrollReveal>
-        <section id="how-it-works" className="relative z-10 mx-auto max-w-[1240px] px-6 pb-24 pt-20 sm:px-10 lg:px-8">
+        <section id="how-it-works" className="relative z-10 mx-auto max-w-[1440px] px-6 pb-24 pt-20 sm:px-10 lg:px-8">
           <div className="mx-auto max-w-2xl text-center">
             <p className="text-xs font-semibold uppercase tracking-[0.16em] text-emerald-300/80">Workflow</p>
             <h2 className="mt-3 font-display text-3xl font-semibold tracking-[-0.035em] text-white sm:text-4xl">How Guardian works</h2>
@@ -1320,7 +1320,7 @@ export default function Home() {
         </section>
       </ScrollReveal>
 
-      <section id="repository-analyzer" className="relative z-10 mx-auto max-w-[1240px] px-6 pb-24 pt-20 sm:px-10 lg:px-8">
+      <section id="repository-analyzer" className="relative z-10 mx-auto max-w-[1440px] px-6 pb-24 pt-20 sm:px-10 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
           <p className="text-xs font-semibold uppercase tracking-[0.16em] text-emerald-300/80">Try It Now</p>
           <h2 className="mt-3 font-display text-3xl font-semibold tracking-[-0.035em] text-white sm:text-4xl">Analyze a Repository</h2>
@@ -1419,7 +1419,7 @@ export default function Home() {
       {result && (
         <section
           id="dashboard"
-          className={`relative z-10 mx-auto max-w-[1240px] px-6 pb-24 pt-10 transition-all duration-500 sm:px-10 lg:px-8 ${
+          className={`relative z-10 mx-auto max-w-[1440px] px-6 pb-24 pt-10 transition-all duration-500 sm:px-10 lg:px-8 ${
             showDashboard ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"
           }`}
         >
@@ -1689,7 +1689,7 @@ export default function Home() {
       )}
 
       <footer className="relative z-10 border-t border-white/[0.06] bg-[#060a08]">
-        <div className="mx-auto flex max-w-[1240px] flex-col items-center justify-between gap-4 px-6 py-10 sm:flex-row sm:px-10 lg:px-8">
+        <div className="mx-auto flex max-w-[1440px] flex-col items-center justify-between gap-4 px-6 py-10 sm:flex-row sm:px-10 lg:px-8">
           <div className="flex items-center gap-2.5">
             <div className="grid h-7 w-7 place-items-center rounded-lg border border-emerald-100/35 bg-gradient-to-br from-emerald-100 to-emerald-400 text-[#052513]">
               <ShieldIcon className="h-3.5 w-3.5" />

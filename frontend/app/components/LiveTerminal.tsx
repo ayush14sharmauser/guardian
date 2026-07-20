@@ -16,9 +16,9 @@ const LOG_LINES = [
   "Analysis Complete",
 ];
 
-const TYPE_SPEED_MS = 32;
-const LINE_DELAY_MS = 420;
-const HOLD_AFTER_COMPLETE_MS = 3200;
+const TYPE_SPEED_MS = 30;
+const LINE_DELAY_MS = 380;
+const HOLD_AFTER_COMPLETE_MS = 3400;
 const RESET_PAUSE_MS = 500;
 
 // Purely presentational — demonstrates what a real `guardian scan` run looks
@@ -31,15 +31,19 @@ export default function LiveTerminal() {
 
   useEffect(() => {
     const query = window.matchMedia("(prefers-reduced-motion: reduce)");
+
     setReducedMotion(query.matches);
-    const listener = (event: MediaQueryListEvent) => setReducedMotion(event.matches);
+
+    const listener = (event: MediaQueryListEvent) =>
+      setReducedMotion(event.matches);
+
     query.addEventListener("change", listener);
+
     return () => query.removeEventListener("change", listener);
   }, []);
 
   useEffect(() => {
     if (reducedMotion) {
-      // Show the finished state once, no looping animation.
       setTypedChars(COMMAND.length);
       setVisibleLines(LOG_LINES.length);
       return;
@@ -49,24 +53,41 @@ export default function LiveTerminal() {
 
     const typeCommand = (index: number) => {
       if (cancelled) return;
+
       if (index <= COMMAND.length) {
         setTypedChars(index);
-        timeoutRef.current = setTimeout(() => typeCommand(index + 1), TYPE_SPEED_MS);
+
+        timeoutRef.current = setTimeout(
+          () => typeCommand(index + 1),
+          TYPE_SPEED_MS
+        );
       } else {
-        timeoutRef.current = setTimeout(() => revealLine(0), LINE_DELAY_MS);
+        timeoutRef.current = setTimeout(
+          () => revealLine(0),
+          LINE_DELAY_MS
+        );
       }
     };
 
     const revealLine = (index: number) => {
       if (cancelled) return;
+
       if (index < LOG_LINES.length) {
         setVisibleLines(index + 1);
-        timeoutRef.current = setTimeout(() => revealLine(index + 1), LINE_DELAY_MS);
+
+        timeoutRef.current = setTimeout(
+          () => revealLine(index + 1),
+          LINE_DELAY_MS
+        );
       } else {
         timeoutRef.current = setTimeout(() => {
           setTypedChars(0);
           setVisibleLines(0);
-          timeoutRef.current = setTimeout(() => typeCommand(0), RESET_PAUSE_MS);
+
+          timeoutRef.current = setTimeout(
+            () => typeCommand(0),
+            RESET_PAUSE_MS
+          );
         }, HOLD_AFTER_COMPLETE_MS);
       }
     };
@@ -75,7 +96,10 @@ export default function LiveTerminal() {
 
     return () => {
       cancelled = true;
-      if (timeoutRef.current) clearTimeout(timeoutRef.current);
+
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
     };
   }, [reducedMotion]);
 
@@ -84,38 +108,56 @@ export default function LiveTerminal() {
   const isComplete = visibleLines === LOG_LINES.length;
 
   return (
-    <div className="relative mx-auto w-full max-w-[480px]">
-      <div aria-hidden="true" className="absolute -inset-10 rounded-full bg-emerald-400/15 blur-[70px]" />
-      <div className="relative overflow-hidden rounded-[28px] border border-white/[0.14] bg-[#0c1511]/80 shadow-[0_36px_100px_rgba(0,0,0,0.5)] backdrop-blur-2xl">
-        <div className="flex items-center gap-2 border-b border-white/[0.09] bg-black/20 px-4 py-3">
-          <span className="h-2.5 w-2.5 rounded-full bg-rose-300/70" />
-          <span className="h-2.5 w-2.5 rounded-full bg-amber-300/70" />
-          <span className="h-2.5 w-2.5 rounded-full bg-emerald-300/70" />
-          <span className="ml-3 font-mono text-[11px] text-white/40">guardian — terminal</span>
+    <div className="relative mx-auto w-full max-w-[560px]">
+      <div
+        aria-hidden="true"
+        className="absolute -inset-12 rounded-full bg-emerald-400/20 blur-[100px]"
+      />
+
+      <div className="relative overflow-hidden rounded-[30px] border border-white/15 bg-[#0b1411]/85 shadow-[0_40px_120px_rgba(0,0,0,0.65)] backdrop-blur-3xl">
+
+        <div className="flex items-center gap-2 border-b border-white/10 bg-white/[0.03] px-5 py-4">
+          <span className="h-2.5 w-2.5 rounded-full bg-rose-300/80" />
+          <span className="h-2.5 w-2.5 rounded-full bg-amber-300/80" />
+          <span className="h-2.5 w-2.5 rounded-full bg-emerald-300/80" />
+
+          <span className="ml-3 font-mono text-xs tracking-wide text-white/45">
+            guardian — terminal
+          </span>
         </div>
 
         <div
-          aria-label="Animated demo of a Guardian repository scan running in a terminal"
-          className="min-h-[268px] p-4 font-mono text-[13px] leading-6 sm:p-5"
           role="img"
+          aria-label="Animated demo of a Guardian repository scan running in a terminal"
+          className="min-h-[340px] p-7 font-mono text-[14px] leading-8 sm:min-h-[380px] sm:p-8"
         >
           <div className="flex flex-wrap items-center gap-1 text-emerald-200">
             <span className="text-white/40">$</span>
+
             <span>{commandText}</span>
-            {isTypingCommand && <span className="terminal-cursor inline-block h-[14px] w-[7px] bg-emerald-200" />}
+
+            {isTypingCommand && (
+              <span className="terminal-cursor inline-block h-4 w-2 bg-emerald-200" />
+            )}
           </div>
 
-          <div className="mt-3 space-y-1.5">
+          <div className="mt-5 space-y-2">
             {LOG_LINES.slice(0, visibleLines).map((line) => (
-              <div className="flex items-center gap-2 text-white/75" key={line}>
+              <div
+                key={line}
+                className="flex items-center gap-3 text-white/80"
+              >
                 <span className="text-emerald-300">✓</span>
+
                 <span>{line}</span>
               </div>
             ))}
+
             {isComplete && (
-              <div className="mt-2 flex items-center gap-2 text-white/40">
+              <div className="mt-4 flex items-center gap-2 text-white/40">
                 <span>$</span>
-                <span className="terminal-cursor inline-block h-[14px] w-[7px] bg-white/40" />
+
+                <span className="terminal-cursor inline-block h-4 w-2 bg-white/40" />
               </div>
             )}
           </div>
